@@ -1,0 +1,57 @@
+.conatiner {
+  width:640px;
+  margin: 0 auto;
+}
+
+.gameboard {
+  position: absolute;
+  top:50px;
+  width: 640px;
+  height: 640px;
+  border-radius: 310px;
+  background-color: #000;
+
+}
+.col {
+  width: 300px;
+  height: 300px;
+  margin:10px;
+  float: left;
+  opacity: 0.9;
+
+}
+
+.no1 {
+    border-top-left-radius: 300px;
+    background-color: #ff4040;
+}
+
+.no2 {
+
+    border-top-right-radius: 300px;
+    background-color: #1a7e55;
+    float:left;
+}
+
+.no3 {
+
+    border-bottom-left-radius: 300px;
+    background-color: #F4D03F;
+    float:left;
+}
+
+.no4 {
+
+    background-color: #2E86C1;
+    border-bottom-right-radius: 300px;
+    float:left;
+}
+button {
+    position:absolute;
+    top: 15%;
+    right:21%
+}
+
+body {
+	background: #273746;
+}

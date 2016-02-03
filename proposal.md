@@ -10,7 +10,7 @@ This game is based on the classic game of Simon Says. The game will be a score b
 * HTML
 * CSS
 * Javascript
-* Vanilla JS
+* JQuery
 
 ### User Stories:
 *	User will click on the start button starting the timer and will see squares follow a pattern of different lights and sounds.
