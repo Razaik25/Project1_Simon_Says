@@ -8,7 +8,7 @@ body {
 	 /*background: #979A9A;*/
    background: url('images/gplaypattern_@2X.png');
    font-family: 'simonsays',cursive;
-   font-size: 25px;
+   font-size: 30px;
 }
 
 .conatiner {
@@ -62,42 +62,74 @@ body {
     float:left;
 }
 
-#round {
-  position:absolute;
-  top: 250px;
-  left: 947px;
-
-}
-
-#result {
-  position:absolute;
-  top: 195px;
-  left: 904px;
-
-}
-
 #player {
   position:absolute;
   top: 161px;
-  left: 948px;
+  left: 865px;
   text-shadow: 1px 1px 1px #ccc;
+}
+
+
+#round {
+  position:absolute;
+  top: 250px;
+  left: 871px;
+
 }
 
 
 #timer {
   position:absolute;
   top: 326px;
-  left: 949px;
+  left: 871px;
 }
-
 
 #score {
   position:absolute;
   top: 401px;
-  left: 949px;
+  left: 871px;
 }
 
-button {
+#result {
+  position:absolute;
+  top: 265px;
+  left: 871px;
+
+}
+
+#whowon {
+  position:absolute;
+  top: 200px;
+  left: 866px;
+}
+
+#wholost {
+  position: absolute;
+  top: 315px;
+  left: 866px;
+}
+
+#winner {
+ display: none;
+ position: absolute;
+ width: 2%;
+ height: 7%;
+ /*top: 191px;
+ left: 819px;*/
+
+}
+
+#loser {
+  display:none;
+  position: absolute;
+  width: 3%;
+  height: 8%;
+  /*left: 822px;
+  top: 306px;*/
+
+}
+
+#start {
     position:absolute;
     top: 78px;
     left: 934px;
