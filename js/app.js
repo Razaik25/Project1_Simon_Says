@@ -16,9 +16,10 @@ var simon_says = {
     score: 0,        // current score of the user
     genSeqArr: [],   //array to generate sequence lighting/sounds pattern
     userSeqArr: [],  // array to keep track of user's pattern
-    player: 1,
+    player: 1,       // keep track if player 1 is playing or player 2
     move: 0,          //current move of the user
     start: false,     // to control when the displayPattern should be displayed
+    score: 0,         // keep the score of the user
 
 
     startGame: function() {
@@ -27,8 +28,15 @@ var simon_says = {
       this.rounds = 1;
       this.addHandler();
       this.addHandlerCol();
-      this.newRound();
+      this.newGame();
 
+    },
+
+    newGame: function () {
+
+      //called everytime a new game begins
+      this.rounds = 1;
+      this.newRound();
 
     },
 
@@ -39,8 +47,9 @@ var simon_says = {
       this.userSeqArr =[];
       if(this.start) {
         this.showRound();
-        //this.showPlayer();
         this.displayPattern();
+        this.userScore();
+        this.showScore();
       }
       // reset the current user move to zero
       this.move = 0;
@@ -51,9 +60,10 @@ var simon_says = {
       // initialize the game
       this.showRound();
       this.showPlayer();
+      this.userScore();
       this.displayTime();
-      $result.text('');
-      this.newRound();
+      //$result.text('');
+      $result.hide();
 
     },
 
@@ -63,6 +73,15 @@ var simon_says = {
      $('#round').fadeOut(500);
      $('#round').text('Round: '+ this.rounds);
      $('#round').fadeIn(500);
+
+    },
+
+    showScore: function () {
+
+      // shows the current round number
+     $('#score').fadeOut(500);
+     $('#score').text('Score: '+ this.score);
+     $('#score').fadeIn(500);
 
     },
 
@@ -77,6 +96,7 @@ var simon_says = {
       //clear player, round and timer
       $('#round').text('');
       $('#player').text('');
+      $('#score').text('');
       stopTimer();
 
       function stopTimer() {
@@ -84,6 +104,7 @@ var simon_says = {
         $('#timer').text('');
       }
       $result.text('Game Ends! Nice Try!');
+      $result.show();
 
     },
 
@@ -94,10 +115,11 @@ var simon_says = {
       var that = this;
       $start.on('click', function() {
         console.log('game start');
-        that.displayPattern();
+        //that.displayPattern();
         that.start = true;
         //console.log(simon_says.start);
         that.init();
+        that.newGame();
         });
 
     },
@@ -141,7 +163,8 @@ var simon_says = {
 
       //turn event hadlers off of all the columns off
       var that = this;
-      $('.col').off();
+      /*$('.col').off();
+      //disablecols();*/
 
       // get the column that was supposed to be clicked
       var $correctCol = this.genSeqArr[this.move];
@@ -267,6 +290,23 @@ var simon_says = {
 
     },
 
+    userScore: function () {
+
+      // Calculating the score
+      if(this.rounds === 1) {
+        this.score = 1;
+      } else {
+        this.score = this.score * this.rounds;
+      }
+
+      // // Displaying the score
+      // $('#score').fadeIn(500);
+      // $('#score').text('Score: '+ this.score);
+      // $('#score').fadeIn(500);
+
+
+    },
+
     countClicks: function (value) {
 
       //Gets the value of the column that was clicked and pushs it into userSeqArr Array
@@ -298,9 +338,9 @@ var simon_says = {
 
       // increment the round
       this.rounds++;
-      //increment level, display it, disable the pads wait 1 second and then reset the game
+      /*increment level, display it, flash the cols wait 1 second and then reset the game
       //this.displayLevel();
-      //this.active=false;
+      //this.start=false;*/
 
       // Give a 1 second delay until the start of the next round
       setTimeout(function(){
@@ -316,3 +356,10 @@ $(document).ready(function(){
   console.log('script is linked');
   simon_says.startGame();
 });
+
+
+// Function to diasble col event handlers for 10 seconds after the user matches wrong sequence
+// will see if i have to use this later, have to add the delay.
+function disablecols () {
+  $('.col').css('pointer-events', 'none');
+}
