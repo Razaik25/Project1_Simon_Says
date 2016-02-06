@@ -28,7 +28,7 @@ var simon_says = {
       this.addHandler();
       this.addHandlerCol();
       this.newRound();
-      $result.text('');
+
 
     },
 
@@ -52,6 +52,8 @@ var simon_says = {
       this.showRound();
       this.showPlayer();
       this.displayTime();
+      $result.text('');
+      this.newRound();
 
     },
 
