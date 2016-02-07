@@ -11,7 +11,7 @@ var $submit = $('#submit');
 var $p1Name = $('#Player1name');
 var $p2Name = $('#Player2name');
 var $start2 = $('#start2');
-var $modal = $('#openModal');
+
 
 // Game Logic
 // Declaring an object literal
@@ -27,7 +27,7 @@ var simon_says = {
     player1Score: 0,                // store player 1 score
     player2Score: 0,                // store player 2 score
     player1Time: 0,                 // store player 1 time
-    player2TIme:0,                  // store player 2 time
+    player2Time:0,                  // store player 2 time
     playerOne: 'Player1',           // Player 1 to determine who's turn
     playerTwo: 'Player2',           // Player 2 to determine who's turn
     playerOneName: '',              // user input for player 1
@@ -38,7 +38,7 @@ var simon_says = {
       //Starts the game
       this.rounds = 1;
       this.addHandler();
-      this.addHandlerCol();  // bug, before clicking start button cols are enabled
+      this.addHandlerCol();
       this.newGame();
 
     },
@@ -101,7 +101,7 @@ var simon_says = {
      $('#score').fadeIn(500);
      if (this.playerTurn === 'Player1'){
        $('#score').text(this.playerOneName + ' Score: '+ this.score);
-     } else {
+     } else if(this.playerTurn === 'Player2') {
        $('#score').text(this.playerTwoName +' Score: '+ this.score);
      }
 
@@ -129,7 +129,7 @@ var simon_says = {
       if (this.playerTurn === this.playerOne) {
         this.player1Time = time;
       } else if (this.playerTurn === this.playerTwo) {
-        this.player2TIme = time;
+        this.player2Time = Math.abs(this.player1Time - time);
       }
 
       function stopTimer() {
@@ -385,7 +385,7 @@ var simon_says = {
         if(this.player1Time > this.player2TIme) {
           // player  two won
           animateEnd();
-          $('#whowon').text(this.playerTwoName + '  wins '+'Score: '+ this.player2Score + ' Time: '+ this.player2TIme);
+          $('#whowon').text(this.playerTwoName + '  wins '+'Score: '+ this.player2Score + ' Time: '+ this.player2Time);
           $('#wholost').text(this.playerOneName + ' Score: '+ this.player1Score + ' Time: '+ this.player1Time);
           $('#whowon').show();
           $('#wholost').show();
@@ -429,8 +429,8 @@ $(document).ready(function(){
 
   //Adding click event to start button in the modal box
   $start2.on('click', function (){
-      // Hiding the modal box
-      $modal.hide();
+      // Hiding the dialog box
+      $('.dialog').hide();
       // starting the game
       simon_says.startGame();
       // Generating fake click for start button within  modal start button click event

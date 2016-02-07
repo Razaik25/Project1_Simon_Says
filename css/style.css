@@ -166,7 +166,7 @@ body {
    background: #1b435e;
    }
 
-.modalDialog {
+.dialog {
    text-align: center;
    position: absolute;;
    font-family: 'orbitron';
@@ -176,20 +176,18 @@ body {
    bottom: 0;
    left: 0;
    background: rgba(0,0,0,0.8);
-   z-index: 99999;
-   opacity:0;
    -webkit-transition: opacity 400ms ease-in;
    -moz-transition: opacity 400ms ease-in;
    transition: opacity 400ms ease-in;
-   pointer-events: none;
+
    }
 
-.modalDialog:target {
+.dialog:target {
   opacity:1;
   pointer-events: auto;
   }
 
-.modalDialog > div {
+.dialog > div {
   position: relative;
   font-size: 30px;
   width: 1039px;
@@ -203,10 +201,6 @@ body {
   background: -webkit-linear-gradient(#fff, #999);
   background: -o-linear-gradient(#fff, #999);
   }
-
-.close {
-  display: none;
- }
 
 .form-control{
   height: 31px;
