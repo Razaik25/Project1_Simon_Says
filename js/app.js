@@ -18,7 +18,7 @@ var simon_says = {
     userSeqArr: [],                 // array to keep track of user's pattern
     playerTurn: '',                 // keep track if player 1 is playing or player 2
     move: 0,                        //current move of the user
-    start: false,                   // to control when the displayPattern should be displayed  score: 0,                       //
+    start: false,                   // to control when the displayPattern should be displayed
     player1Score: 0,                // store player 1 score
     player2Score: 0,                // store player 2 score
     player1Time: 0,                 // store player 1 time
@@ -70,13 +70,12 @@ var simon_says = {
       this.showPlayer();
       this.userScore();
       this.displayTime();
-      //$result.text('');
+
       $result.hide();
       $('#whowon').hide();
       $('#wholost').hide();
       $('#winner').hide();
       $('#loser').hide();
-      //$('#whowon').hide();
 
     },
 
@@ -115,7 +114,7 @@ var simon_says = {
       stopTimer();
 
       time = stopTimer();
-      // Updatedating player score
+      // Update dating player score
       if (this.playerTurn === this.playerOne) {
         this.player1Time = time;
       } else if (this.playerTurn === this.playerTwo) {
@@ -136,9 +135,7 @@ var simon_says = {
       var that = this;
       $start.on('click', function() {
         console.log('game start');
-        //that.displayPattern();
         that.start = true;
-        //console.log(simon_says.start);
         that.init();
         that.newGame();
         $('#start').hide();
@@ -150,32 +147,23 @@ var simon_says = {
       // Add click event handlers for all the four columns
       var that = this;
       $col1.on('click', function () {
-
           that.flash($col1,1,300);
           that.countClicks($col1.attr('value'));
-
-
         });
 
         $col2.on('click', function () {
-
           that.flash($col2,1,300);
           that.countClicks($col2.attr('value'));
-
         });
 
         $col3.on('click', function () {
-
           that.flash($col3,1,300);
           that.countClicks($col3.attr('value'));
-
         });
 
         $col4.on('click', function () {
-
           that.flash($col4,1,300);
           that.countClicks($col4.attr('value'));
-
         });
 
     },
@@ -407,7 +395,6 @@ var simon_says = {
       $result.show();
       StartPosition1();
 
-
     }
  }
 
@@ -419,7 +406,7 @@ $(document).ready(function(){
 
 });
 
-//controls animatation at the end of the game
+//controls animation at the end of the game
 function animateEnd() {
 
   $('#winner').animate({ top: "191px" }, 'fast').animate({

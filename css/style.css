@@ -118,8 +118,8 @@ body {
 #winner {
  display: none;
  position: absolute;
- width: 2%;
- height: 7%;
+ width: 3%;
+ height: 8%;
  text-shadow: 1px 1px 1px #ccc;
  /*top: 191px;*/
  left: 819px;
