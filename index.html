@@ -7,29 +7,39 @@
     	<link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-<div class="container">
-    <div class="gameboard">
-      <div class="one col" value="1"></div>
-      <div class="two col" value="2"></div>
-      <div class="three col" value="3"></div>
-      <div class ="four col" value="4"></div>
+    <div class="container">
+      <div class="gameboard">
+        <div class="one col" value="1"></div>
+        <div class="two col" value="2"></div>
+        <div class="three col" value="3"></div>
+        <div class ="four col" value="4"></div>
+      </div>
+
+      <button id="start">Start Game</button>
+      <span id="player"></span>
+      <span id="round"></span>
+      <span id="timer"></span>
+      <span id="score"></span>
+      <span id="result"></span>
+      <span id="whowon"></span>
+      <span id="wholost"></span>
+      <img src="css/images/smileys-sad.gif" id="loser">
+      <img src="css/images/smileys-winner.gif" id="winner">
+
+      <div id="openModal" class="modalDialog">
+	       <div id="Modalcontainer">
+		         <a href="#close" title="Close" class="close">X</a>
+		         <h1>Simon Says</h1>
+		         <p>I will play a melody, you play it back for as long as you can. Ready???</p>
+             <p>Players enter your names and press submit</p>
+             <input type="text" class="form-control" id="Player1name" placeholder="Player 1's Name" autofocus>
+             <input type="text" class="form-control" id="Player2name" placeholder="Player 2's Name">
+             <button id="submit" class="btn btn-primary">Submit</button>
+             <p>Controls: Click on the tiles to match the melody after it is played</p>
+             <button id="start2" class="btn start">Start</button>
+	      </div>
+      </div>
     </div>
-
-    <button id="start">Start Game</button>
-    <span id="player"></span>
-    <span id="round"></span>
-    <span id="timer"></span>
-    <span id="score"></span>
-    <span id="result"></span>
-    <!-- Player 2's Turn -->
-    <span id="whowon"></span>
-    <span id="wholost"></span>
-    <!-- <button id="afterPlayer1">Start</button> -->
-    <img src="css/images/confused-smiley.png" id="loser">
-    <img src="css/images/cool_sunglasses_emoticon.jpg" id="winner">
-    <!-- <button id="playagain"></button> -->
-</div>
-
   <script src="js/jquery-2.2.0.min.js"></script>
   <script src="js/app.js"></script>
   </body>
