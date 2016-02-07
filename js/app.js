@@ -419,12 +419,7 @@ $(document).ready(function(){
 
 });
 
-// Function to diasble col event handlers for 10 seconds after the user matches wrong sequence
-// will see if i have to use this later, have to add the delay.
-function disablecols () {
-  $('.col').css('pointer-events', 'none');
-}
-
+//controls animatation at the end of the game
 function animateEnd() {
 
   $('#winner').animate({ left: "10%", top: "10%" }, 'slow').animate({
@@ -437,6 +432,8 @@ function animateEnd() {
 
 }
 
+
+// Both the functions below control start button position.
 function StartPosition1 () {
   $('#start').css({
               'position': 'absolute',
