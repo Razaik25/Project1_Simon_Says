@@ -141,6 +141,7 @@ var simon_says = {
         //console.log(simon_says.start);
         that.init();
         that.newGame();
+        $('#start').hide();
         });
 
     },
@@ -347,20 +348,12 @@ var simon_says = {
     if(this.move === this.genSeqArr.length){
       // increment the round
       this.rounds++;
-      /*increment level, display it, flash the cols wait 1 second and then reset the game
-      //this.displayLevel();
-      //this.start=false;*/
 
       // Give a 1 second delay until the start of the next round
       setTimeout(function(){
         that.newRound();
       },1000);
     }
-
-  },
-
-  endturn: function () {
-
 
   },
 
@@ -375,6 +368,8 @@ var simon_says = {
         $('#wholost').text('Player two Score: '+ this.player2Score);
         $('#whowon').show();
         $('#wholost').show();
+        StartPosition2();
+
       } else if(this.player2Score > this.player1Score) {
         //player two won
         animateEnd();
@@ -382,6 +377,8 @@ var simon_says = {
         $('#wholost').text('Player one Score: '+ this.player1Score);
         $('#whowon').show();
         $('#wholost').show();
+        StartPosition2();
+
       } else { // if score is same check time
         if(this.player1Time > this.player2TIme) {
           // player  two won
@@ -390,6 +387,8 @@ var simon_says = {
           $('#wholost').text('Player one Score: '+ this.player1Score + ' Time: '+ this.player1Time);
           $('#whowon').show();
           $('#wholost').show();
+          StartPosition2();
+
         } else {
           // player one won
           animateEnd();
@@ -397,6 +396,8 @@ var simon_says = {
           $('#wholost').text('Player two Score: '+ this.player2Score + ' Time: '+ this.player2Time);
           $('#whowon').show();
           $('#wholost').show();
+          StartPosition2();
+
         }
       }
     } else {
@@ -404,6 +405,8 @@ var simon_says = {
       $result.text(this.playerTwo +'\'s Turn');
       this.showScore();
       $result.show();
+      StartPosition1();
+
 
     }
  }
@@ -424,12 +427,35 @@ function disablecols () {
 
 function animateEnd() {
 
-  $('#winner').animate({ left: "45%", top: "10%" }, 'slow').animate({
+  $('#winner').animate({ left: "10%", top: "10%" }, 'slow').animate({
                  left: "819px", top: "191px", opacity: 1 }, 500 );
   $('#winner').show();
 
-  $('#loser').animate({ left: "30%", top: "20%" }, 'slow').animate({
+  $('#loser').animate({ left: "10%", top: "10%" }, 'slow').animate({
                  left: "822px", top: "306px", opacity: 1 }, 500 );
   $('#loser').show();
+
+}
+
+function StartPosition1 () {
+  $('#start').css({
+              'position': 'absolute',
+              'top': '319px',
+              'left': '868px',
+  });
+  $('#start').text('Start');
+  $('#start').show();
+
+}
+
+function StartPosition2 () {
+  $('#start').css({
+              'position': 'absolute',
+              'top': '348px',
+              'left': '868px',
+              'width': '153px'
+  });
+  $('#start').text('Play Again???');
+  $('#start').show();
 
 }

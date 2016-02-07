@@ -65,7 +65,7 @@ body {
 #player {
   position:absolute;
   top: 161px;
-  left: 865px;
+  left: 869px;
   text-shadow: 1px 1px 1px #ccc;
 }
 
@@ -74,6 +74,7 @@ body {
   position:absolute;
   top: 250px;
   left: 871px;
+  text-shadow: 1px 1px 1px #ccc;
 
 }
 
@@ -82,18 +83,21 @@ body {
   position:absolute;
   top: 326px;
   left: 871px;
+  text-shadow: 1px 1px 1px #ccc;
 }
 
 #score {
   position:absolute;
   top: 401px;
   left: 871px;
+  text-shadow: 1px 1px 1px #ccc;
 }
 
 #result {
   position:absolute;
   top: 265px;
   left: 871px;
+  text-shadow: 1px 1px 1px #ccc;
 
 }
 
@@ -101,12 +105,14 @@ body {
   position:absolute;
   top: 200px;
   left: 866px;
+  text-shadow: 1px 1px 1px #ccc;
 }
 
 #wholost {
   position: absolute;
   top: 315px;
   left: 866px;
+  text-shadow: 1px 1px 1px #ccc;
 }
 
 #winner {
@@ -114,6 +120,7 @@ body {
  position: absolute;
  width: 2%;
  height: 7%;
+ text-shadow: 1px 1px 1px #ccc;
  /*top: 191px;
  left: 819px;*/
 
@@ -124,22 +131,54 @@ body {
   position: absolute;
   width: 3%;
   height: 8%;
+  text-shadow: 1px 1px 1px #ccc;
   /*left: 822px;
   top: 306px;*/
 
 }
 
 #start {
-    position:absolute;
+    /*position:absolute;
     top: 78px;
-    left: 934px;
+    left: 868px;
     border:1px solid black;
-    /*font-weight: bold;*/
     display: inline-block;
     margin: 10px;
     font-size: 26px;
     color: #fff;
     border-radius: 8px;
-    cursor: pointer;
+    cursor: pointer;*/
+   position:absolute;
+   top: 78px;
+   left: 868px;
+   width: 142px;
+   height: 55px;
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 25px;
+   font-family: 'simonsays';
+   text-decoration: none;
+   vertical-align: middle;
+   }
+
+#start:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+
+#start:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
 
 }
