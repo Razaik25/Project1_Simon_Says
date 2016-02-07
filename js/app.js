@@ -7,9 +7,14 @@ var $col3 = $('.three');
 var $col4 = $('.four');
 var myTime;
 var $result = $('#result');
+var $submit = $('#submit');
+var $p1Name = $('#Player1name');
+var $p2Name = $('#Player2name');
+var $start2 = $('#start2');
+var $modal = $('#openModal');
 
 // Game Logic
-// Declaring a object literal
+// Declaring an object literal
 var simon_says = {
 
     rounds: 1,                      // no of rounds user plays
@@ -18,19 +23,22 @@ var simon_says = {
     userSeqArr: [],                 // array to keep track of user's pattern
     playerTurn: '',                 // keep track if player 1 is playing or player 2
     move: 0,                        //current move of the user
-    start: false,                   // to control when the displayPattern should be displayed
+    startclicks: 0,                 // to count clicks on start button
     player1Score: 0,                // store player 1 score
     player2Score: 0,                // store player 2 score
     player1Time: 0,                 // store player 1 time
     player2TIme:0,                  // store player 2 time
-    playerOne: 'Player1',           // Player 1
-    playerTwo: 'Player2',           // Player 2
+    playerOne: 'Player1',           // Player 1 to determine who's turn
+    playerTwo: 'Player2',           // Player 2 to determine who's turn
+    playerOneName: '',              // user input for player 1
+    playerTwoName: '',              // user inout for player 2
+
 
     startGame: function() {
       //Starts the game
       this.rounds = 1;
       this.addHandler();
-      this.addHandlerCol();
+      this.addHandlerCol();  // bug, before clicking start button cols are enabled
       this.newGame();
 
     },
@@ -46,12 +54,11 @@ var simon_says = {
       // Resets the variables as new round begins
       this.genSeqArr =[];
       this.userSeqArr =[];
-      if(this.start) {
-        this.showRound();
-        this.displayPattern();
-        this.userScore();
-        this.showScore();
-      }
+      this.showRound();
+      this.displayPattern();
+      this.userScore();
+      this.showScore();
+
       // reset the current user move to zero
       this.move = 0;
 
@@ -93,16 +100,20 @@ var simon_says = {
      $('#score').text('Score: '+ this.score);
      $('#score').fadeIn(500);
      if (this.playerTurn === 'Player1'){
-       $('#score').text('Player1 Score: '+ this.score);
+       $('#score').text(this.playerOneName + ' Score: '+ this.score);
      } else {
-       $('#score').text('Player2 Score: '+ this.score);
+       $('#score').text(this.playerTwoName +' Score: '+ this.score);
      }
 
     },
 
     showPlayer: function () {
     // shows the current player
-     $('#player').text('Player: '+ this.playerTurn);
+      if(this.playerTurn === 'Player1') {
+        $('#player').text('Player: '+ this.playerOneName);
+      } else if (this.playerTurn === 'Player2') {
+        $('#player').text('Player: '+ this.playerTwoName);
+      }
 
     },
 
@@ -114,7 +125,7 @@ var simon_says = {
       stopTimer();
 
       time = stopTimer();
-      // Update dating player score
+      // Update dating player time
       if (this.playerTurn === this.playerOne) {
         this.player1Time = time;
       } else if (this.playerTurn === this.playerTwo) {
@@ -135,9 +146,11 @@ var simon_says = {
       var that = this;
       $start.on('click', function() {
         console.log('game start');
-        that.start = true;
+        that.startclicks++;
         that.init();
-        that.newGame();
+        if(that.startclicks > 1) {
+         that.newGame();
+         }
         $('#start').hide();
         });
 
@@ -169,7 +182,7 @@ var simon_says = {
     },
 
     endGame: function () {
-      //turn event hadlers off of all the columns off
+      //turn event handlers off of for all the columns off
       var that = this;
       /*$('.col').off();
       //disablecols();*/
@@ -211,7 +224,7 @@ var simon_says = {
       var that = this;
       if(count >0){
 
-        // plays the sound associated with the click column
+        // plays the sound associated with the clicked column
         // Audio tags created dynamically but not appended as i added the autoplay option in the tag
         $('<audio autoplay src ="sounds/'+column.attr('class')+'.mp3"></audio>');
         var start = {
@@ -332,7 +345,7 @@ var simon_says = {
         this.move++;
       }
 
-    // if all user has completed the whole  generated sequence
+    // if user has completed the whole  generated sequence
     if(this.move === this.genSeqArr.length){
       // increment the round
       this.rounds++;
@@ -352,8 +365,8 @@ var simon_says = {
       if(this.player1Score > this.player2Score){
         //player one won
         animateEnd();
-        $('#whowon').text('Player one wins- '+'Score: '+ this.player1Score);
-        $('#wholost').text('Player two Score: '+ this.player2Score);
+        $('#whowon').text(this.playerOneName + ' wins '+'Score: '+ this.player1Score);
+        $('#wholost').text(this.playerTwoName +' Score: '+ this.player2Score);
         $('#whowon').show();
         $('#wholost').show();
         StartPosition2();
@@ -361,18 +374,19 @@ var simon_says = {
       } else if(this.player2Score > this.player1Score) {
         //player two won
         animateEnd();
-        $('#whowon').text('Player two wins- '+'Score: '+ this.player2Score);
-        $('#wholost').text('Player one Score: '+ this.player1Score);
+        $('#whowon').text(this.playerTwoName +' wins '+'Score: '+ this.player2Score);
+        $('#wholost').text(this.playerOneName +' Score: '+ this.player1Score);
         $('#whowon').show();
         $('#wholost').show();
         StartPosition2();
 
       } else { // if score is same check time
+        // bug in player2 time
         if(this.player1Time > this.player2TIme) {
           // player  two won
           animateEnd();
-          $('#whowon').text('Player two wins- '+'Score: '+ this.player2Score + ' Time: '+ this.player2TIme);
-          $('#wholost').text('Player one Score: '+ this.player1Score + ' Time: '+ this.player1Time);
+          $('#whowon').text(this.playerTwoName + '  wins '+'Score: '+ this.player2Score + ' Time: '+ this.player2TIme);
+          $('#wholost').text(this.playerOneName + ' Score: '+ this.player1Score + ' Time: '+ this.player1Time);
           $('#whowon').show();
           $('#wholost').show();
           StartPosition2();
@@ -380,8 +394,8 @@ var simon_says = {
         } else {
           // player one won
           animateEnd();
-          $('#whowon').text('Player one wins- '+'Score: '+ this.player1Score + ' Time: '+ this.player1Time);
-          $('#wholost').text('Player two Score: '+ this.player2Score + ' Time: '+ this.player2Time);
+          $('#whowon').text(this.playerOneName + ' wins '+'Score: '+ this.player1Score + ' Time: '+ this.player1Time);
+          $('#wholost').text(this.playerTwoName + ' Score: '+ this.player2Score + ' Time: '+ this.player2Time);
           $('#whowon').show();
           $('#wholost').show();
           StartPosition2();
@@ -390,7 +404,7 @@ var simon_says = {
       }
     } else {
       // Have to change this to show which player turn and when to end
-      $result.text(this.playerTwo +'\'s Turn');
+      $result.text(this.playerTwoName +'\'s Turn');
       this.showScore();
       $result.show();
       StartPosition1();
@@ -402,7 +416,26 @@ var simon_says = {
 
 $(document).ready(function(){
   console.log('script is linked');
-  simon_says.startGame();
+
+  //Adding click event to submit button
+  $submit.on('click', function () {
+    simon_says.playerOneName = $p1Name.val();
+    simon_says.playerTwoName = $p2Name.val();
+    // Hide the submit button when user submits the names
+    if(($p1Name.val() && $p2Name.val())!== '') {
+      $submit.hide();
+    }
+  });
+
+  //Adding click event to start button in the modal box
+  $start2.on('click', function (){
+      // Hiding the modal box
+      $modal.hide();
+      // starting the game
+      simon_says.startGame();
+      // Generating fake click for start button within  modal start button click event
+      $start.click();
+  });
 
 });
 
@@ -419,8 +452,7 @@ function animateEnd() {
 
 }
 
-
-// Both the functions below control start button position.
+// All the functions below control start button position.
 function StartPosition1 () {
   $('#start').css({
               'position': 'absolute',

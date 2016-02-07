@@ -11,4 +11,4 @@ As you play the game, you will have to follow the pattern of lights and sounds f
 * HTML
 * CSS
 * Javascript
-* jquery
+* jQuery
