@@ -448,7 +448,7 @@ function StartPosition1 () {
 function StartPosition2 () {
   $('#start').css({
               'position': 'absolute',
-              'top': '348px',
+              'top': '372px',
               'left': '868px',
               'width': '153px'
   });
