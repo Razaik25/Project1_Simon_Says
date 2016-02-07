@@ -121,8 +121,8 @@ body {
  width: 2%;
  height: 7%;
  text-shadow: 1px 1px 1px #ccc;
- /*top: 191px;
- left: 819px;*/
+ /*top: 191px;*/
+ left: 819px;
 
 }
 
@@ -132,8 +132,8 @@ body {
   width: 3%;
   height: 8%;
   text-shadow: 1px 1px 1px #ccc;
-  /*left: 822px;
-  top: 306px;*/
+  left: 822px;
+  /*top: 306px;*/
 
 }
 

@@ -422,11 +422,11 @@ $(document).ready(function(){
 //controls animatation at the end of the game
 function animateEnd() {
 
-  $('#winner').animate({ left: "10%", top: "10%" }, 'slow').animate({
+  $('#winner').animate({ top: "191px" }, 'fast').animate({
                  left: "819px", top: "191px", opacity: 1 }, 500 );
   $('#winner').show();
 
-  $('#loser').animate({ left: "10%", top: "10%" }, 'slow').animate({
+  $('#loser').animate({ top: "306px" }, 'fast').animate({
                  left: "822px", top: "306px", opacity: 1 }, 500 );
   $('#loser').show();
 
