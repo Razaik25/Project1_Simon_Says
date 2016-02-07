@@ -24,78 +24,50 @@ body {
   height: 640px;
   border-radius: 310px;
   background-color: #17202A;
-}
 
+
+}
 .col {
   width: 300px;
   height: 300px;
   margin:10px;
   float: left;
   opacity: 0.6;  /*will use JS to modify the opacity value to give an impression of lighting on the columns.*/
+
 }
 
 .one {
-  border-top-left-radius: 300px;
-  background-color: #ff4040;
+    border-top-left-radius: 300px;
+    background-color: #ff4040;
 }
 
 .two {
-  border-top-right-radius: 300px;
-  background-color: #1a7e55;
-  float:left;
+
+    border-top-right-radius: 300px;
+    background-color: #1a7e55;
+    float:left;
 }
 
 .three {
-  border-bottom-left-radius: 300px;
-  background-color: #F4D03F;
-  float:left;
+
+    border-bottom-left-radius: 300px;
+    background-color: #F4D03F;
+    float:left;
 }
 
 .four {
-  background-color: #2E86C1;
-  border-bottom-right-radius: 300px;
-  float:left;
-}
 
-#score {
-  position:absolute;
-  top: 143px;
-  left: 984px;
+    background-color: #2E86C1;
+    border-bottom-right-radius: 300px;
+    float:left;
 }
 
 #player {
   position:absolute;
   top: 161px;
-  left: 984px;
+  left: 869px;
   text-shadow: 1px 1px 1px #ccc;
 }
-
-#timer {
-  position:absolute;
-  top: 181px;
-  left: 984px;
-}
-
-button {
-    position:absolute;
-    top: 78px;
-    left: 934px;
-    border:1px solid black;
-    font-weight: bold;
-    display: inline-block;
-    margin: 10px;
-    font-size: 26px;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-
-}
-
-body {
-	 background: #273746;
- }
-
-
 
 
 #round {
@@ -166,16 +138,6 @@ body {
 }
 
 #start {
-    /*position:absolute;
-    top: 78px;
-    left: 868px;
-    border:1px solid black;
-    display: inline-block;
-    margin: 10px;
-    font-size: 26px;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;*/
    position:absolute;
    top: 78px;
    left: 868px;
@@ -208,3 +170,5 @@ body {
    border-top-color: #1b435e;
    background: #1b435e;
    }
+
+}

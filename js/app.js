@@ -8,30 +8,9 @@ var $col4 = $('.four');
 var myTime;
 var $result = $('#result');
 
-
 // Game Logic
 // Declaring a object literal
 var simon_says = {
-
-    rounds: 1,       // no of rounds user plays
-    score: 0,        // current score of the user
-    genSeqArr: [],   //array to generate sequence lighting/sounds pattern
-    userSeqArr: [],  // array to keep track of user's pattern
-    player: 1,
-    move: 0,
-    start: false,
-
-
-    startGame: function() {
-
-      this.addHandler();
-      if(this.start === true){
-        simon_says.displayPattern();
-      }
-      this.newRound();
-
-
-    },
 
     rounds: 1,                      // no of rounds user plays
     score: 0,                       // keep the score of the current user
@@ -53,7 +32,6 @@ var simon_says = {
       this.addHandler();
       this.addHandlerCol();
       this.newGame();
-
 
     },
 
@@ -158,15 +136,6 @@ var simon_says = {
       var that = this;
       $start.on('click', function() {
         console.log('game start');
-
-        simon_says.start = true;
-        simon_says.init();
-        $col1.on('click', function () {
-            console.log('1');
-            simon_says.flash($col1,1,300);
-            simon_says.countClicks($col1.attr('value'));
-            simon_says.move++;
-
         //that.displayPattern();
         that.start = true;
         //console.log(simon_says.start);
@@ -175,78 +144,32 @@ var simon_says = {
         $('#start').hide();
         });
 
-
     },
-
-
-          $col2.on('click', function () {
-            console.log('2');
-            simon_says.flash($col2,1,300);
-            simon_says.countClicks($col2.attr('value'));
-            simon_says.move++;
 
     addHandlerCol: function () {
       // Add click event handlers for all the four columns
       var that = this;
       $col1.on('click', function () {
 
-
           that.flash($col1,1,300);
           that.countClicks($col1.attr('value'));
-
-          $col3.on('click', function () {
-            console.log('3');
-            simon_says.flash($col3,1,300);
-            simon_says.countClicks($col3.attr('value'));
-            simon_says.move++;
 
 
         });
 
         $col2.on('click', function () {
 
-
-          $col4.on('click', function () {
-            console.log('4');
-            simon_says.flash($col4,1,300);
-            simon_says.countClicks($col4.attr('value'));
-            simon_says.move++;
-
           that.flash($col2,1,300);
           that.countClicks($col2.attr('value'));
-
 
         });
 
         $col3.on('click', function () {
 
-
-    init: function () {
-      // initialize the game
-      this.showRound();
-      this.showPlayer();
-      this.displayTime();
-
-    },
-
-    showRound: function () {
-     $('#score').text('Round: '+ this.rounds);
-
-    },
-
-    showPlayer: function () {
-     $('#player').text('Player: '+ this.player);
-
           that.flash($col3,1,300);
           that.countClicks($col3.attr('value'));
 
-
         });
-
-
-    newRound: function () {
-      this.genSeqArr =[];
-      this.userSeqArr =[];
 
         $col4.on('click', function () {
 
@@ -254,7 +177,6 @@ var simon_says = {
           that.countClicks($col4.attr('value'));
 
         });
-
 
     },
 
@@ -326,33 +248,13 @@ var simon_says = {
 
     displayPattern: function() {
     //random number between 1 and 4 as there are 4 columns.
-    var that = this;
-
-
-      // call the flash function again if the count is more than 0
-      if(count >0) {
-          setTimeout(function () {
-            that.flash(column,count,time);
-          }, time);
-          // reducing the count eveytime function is called
-          count --;
-        }
-    },
-
-    displayPattern: function() {
-    //random number between 1 and 4 as there are 4 columns.
     var that = this; // catching the current instance of this
-
      for (var i = 0; i < this.rounds; i++) {
          var randomNumber = Math.floor(1 + (Math.random()*4));
          that.genSeqArr.push(randomNumber);
      }
 
-     console.log(that.genSeqArr);
-
-
      // Calling the flash function foe each of the elements of generated sequence array
-
      for(var j = 0; j < that.genSeqArr.length; j++){
        switch (that.genSeqArr[j]) {
          case 1:
@@ -392,42 +294,6 @@ var simon_says = {
       function getlight4() {
         that.flash($col4,1,400);
       }
-
-
-    },
-
-    displayTime: function () {
-      counter = 0;
-      //$('#timer').text('');
-      var timer = setInterval(gettime, 1000);
-      function gettime(){
-        counter++;
-        $('#timer').text('Time: ' + counter);
-
-      }
-    },
-
-    countClicks: function(value) {
-      this.userSeqArr.push(value);
-      this.matchPattern(value);
-
-    },
-
-    matchPattern: function (value) {
-
-    console.log(this.userSeqArr);
-    if( value === this.genSeqArr[this.genSeqArr.length-1]) {
-      this.move++;
-      this.rounds++;
-      this.newRound();
-
-    } else {
-      // if the user does not match the pattern
-      this.endGame();
-    }
-
-   }
-
 
     },
 
@@ -553,16 +419,6 @@ $(document).ready(function(){
 
 });
 
-
-function checkArrEqual(arr1,arr2) {
-  if(arr1.length !== arr2.length)
-        return false;
-    for(var i = arr1.length; i--;) {
-        if(arr1[i] !== arr2[i])
-            return false;
-    }
-    return true;
-
 //controls animatation at the end of the game
 function animateEnd() {
 
@@ -598,6 +454,5 @@ function StartPosition2 () {
   });
   $('#start').text('Play Again???');
   $('#start').show();
-
 
 }
