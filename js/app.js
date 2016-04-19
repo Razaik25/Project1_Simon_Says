@@ -254,7 +254,7 @@ var simon_says = {
          that.genSeqArr.push(randomNumber);
      }
 
-     // Calling the flash function foe each of the elements of generated sequence array
+     // Calling the flash function for each of the elements of generated sequence array
      for(var j = 0; j < that.genSeqArr.length; j++){
        switch (that.genSeqArr[j]) {
          case 1:
@@ -432,7 +432,7 @@ $(document).ready(function(){
       $('.dialog').hide();
       // starting the game
       simon_says.startGame();
-      // Generating fake click for start button within  modal start button click event
+      // Generating fake click for start button within dailog box  start button click event
       $start.click();
   });
 
