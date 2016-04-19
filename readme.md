@@ -8,8 +8,8 @@ As you play the game, you will have to follow the pattern of lights and sounds f
 
 ### Technologies Used:
 
-* HTML
-* CSS
+* HTML5
+* CSS3
 * Javascript
 * jQuery
 
@@ -21,4 +21,4 @@ Please visit at http://razaik25.github.io/Project1_Simon_Says/
 
 - Add functionality so that a user can choose different levels of difficulty ranging from easy, medium and hard
 - Add a pause button
-- Fix the time tracked for second player 
+- Fix the time tracked for second player
