@@ -128,7 +128,7 @@ var simon_says = {
       if (this.playerTurn === this.playerOne) {
         this.player1Time = counter;
       } else if (this.playerTurn === this.playerTwo) {
-        this.player2Time = Math.abs(this.player1Time - counter);
+        this.player2Time = counter;
       }
 
       function stopTimer(time) {
