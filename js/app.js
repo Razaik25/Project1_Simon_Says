@@ -5,7 +5,8 @@ var $col1 = $('.one');
 var $col2 = $('.two');
 var $col3 = $('.three');
 var $col4 = $('.four');
-var myTime;
+var intervalID;
+var counter;
 var $result = $('#result');
 var $submit = $('#submit');
 var $p1Name = $('#Player1name');
@@ -122,20 +123,17 @@ var simon_says = {
       $('#round').text('');
       $('#player').text('');
       $('#score').text('');
-      stopTimer();
-
-      time = stopTimer();
-      // Update dating player time
+      stopTimer(intervalID);
+      // Updating player time
       if (this.playerTurn === this.playerOne) {
-        this.player1Time = time;
+        this.player1Time = counter;
       } else if (this.playerTurn === this.playerTwo) {
-        this.player2Time = Math.abs(this.player1Time - time);
+        this.player2Time = Math.abs(this.player1Time - counter);
       }
 
-      function stopTimer() {
-        clearTimeout(myTime);
+      function stopTimer(time) {
+        clearTimeout(time);
         $('#timer').text('');
-        return myTime;
       }
 
     },
@@ -301,7 +299,7 @@ var simon_says = {
     displayTime: function () {
         // Display the seconds when the user clicks on start button
         counter = 0;
-        myTime = setInterval(gettime, 1000);
+        intervalID = setInterval(gettime, 1000);
         function gettime(){
           counter++;
           $('#timer').text('Time: ' + counter);
